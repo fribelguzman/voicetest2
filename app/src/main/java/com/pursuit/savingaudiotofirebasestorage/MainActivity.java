@@ -14,8 +14,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -23,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StreamDownloadTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
@@ -134,23 +137,45 @@ public class MainActivity extends AppCompatActivity {
 
     private void downloadAudio(){
         final StorageReference filepath = mStorageRef.child("Audio").child("new_audio.3gp");
-        try {
-            filepath.getFile(Uri.fromFile(File.createTempFile("audio",".3gp"))).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    taskSnapshot.getBytesTransferred();
-                    MediaPlayer player = new MediaPlayer();
-                    try {
-                        player.setDataSource();
-                        player.prepare();
-                    } catch (IOException e){
-                        e.printStackTrace();
-                    }
-                    player.start();
+
+        filepath.getStream().addOnSuccessListener(new OnSuccessListener<StreamDownloadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(StreamDownloadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(MainActivity.this, "worked", Toast.LENGTH_SHORT).show();
+
+                MediaPlayer player = new MediaPlayer();
+                try {
+                    player.setDataSource(fileName);
+                    player.prepare();
+                } catch (IOException e){
+                    e.printStackTrace();
                 }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+//        filepath.getFile(new File(fileName)).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+//            @Override
+//            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+//                taskSnapshot.getBytesTransferred();
+//                MediaPlayer player = new MediaPlayer();
+//                try {
+//                    player.setDataSource(fileName);
+//                    player.prepare();
+//                } catch (IOException e){
+//                    e.printStackTrace();
+//                }
+//                player.start();
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 }

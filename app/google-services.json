@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "482447869148",
-    "firebase_url": "https://savingaudiotofirebasesto-47119.firebaseio.com",
-    "project_id": "savingaudiotofirebasesto-47119",
-    "storage_bucket": "savingaudiotofirebasesto-47119.appspot.com"
+    "project_number": "70008276701",
+    "firebase_url": "https://voicetest-7fe76.firebaseio.com",
+    "project_id": "voicetest-7fe76",
+    "storage_bucket": "voicetest-7fe76.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:482447869148:android:26f68659f693317a",
+        "mobilesdk_app_id": "1:70008276701:android:26f68659f693317a",
         "android_client_info": {
           "package_name": "com.pursuit.savingaudiotofirebasestorage"
         }
       },
       "oauth_client": [
         {
-          "client_id": "482447869148-fiir6d1838etvkj9smpb1kvasho10qf8.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.pursuit.savingaudiotofirebasestorage",
-            "certificate_hash": "89dc30dab639fa2c2d6efb0b4c3239a3daa1750e"
-          }
-        },
-        {
-          "client_id": "482447869148-uq8ck8db3og566ac8l16q7g31bikmqbo.apps.googleusercontent.com",
+          "client_id": "70008276701-ilfgpe402jg5pf2q7ss1m45iou91hv3m.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC0uBUT1KFSJyBExfR0vkbono-wBYaoXRA"
+          "current_key": "AIzaSyDcF_pa7GLTieuwUwUjygvPu1acruBkYLk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "482447869148-uq8ck8db3og566ac8l16q7g31bikmqbo.apps.googleusercontent.com",
+              "client_id": "70008276701-ilfgpe402jg5pf2q7ss1m45iou91hv3m.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
